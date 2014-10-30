@@ -92,7 +92,7 @@ if __name__ == '__main__':
 
 	#PWD = os.path.abspath(os.curdir)
 
-	engine = create_engine('postgres://PhilipHouse:house@localhost/puzzle', echo=True)
+	engine = create_engine('postgres://eedfuqmgrbyzml:0o1RVkhp7l9FS94kyk3nqfozrs@ec2-54-204-40-96.compute-1.amazonaws.com:5432/d8uars1eukmnaa', echo=True)
 
 	Base.metadata.create_all(engine)
 	Session = sessionmaker(bind=engine)
