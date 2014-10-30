@@ -42,6 +42,7 @@ def login():
 	if form.validate_on_submit():
 
 		user = db.session.query(User).filter_by(username=form.username.data).filter_by(email=form.email.data).first()
+
 		if user is None:
 			flash('User does not exist, please register.')
 			return redirect(url_for('welcome'))
