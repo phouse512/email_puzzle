@@ -144,7 +144,7 @@ def signup():
 			new_user = User(username=form.username.data, email=form.email.data)
 			db.session.add(new_user)
 			db.session.commit()
-	
+		flash(("Successfully registered! Please now login below!"))
 		return redirect(url_for('login'))
 	elif(form.errors):
 		flash((form.errors))
