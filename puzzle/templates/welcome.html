@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Welcome!
+{% endblock title %}
+
+{% block content %}
+
+<div class="row">
+	<div style="margin-top: 50px" class="col-lg-6 col-lg-offset-3">
+		<h3>Welcome to the email puzzle ~ glad to have you here!</h3>
+		<h5>Here's how it works:</h5>
+		<ul>
+			<li>you register with an email and a username that anonymizes your identity</li>
+			<li>every week there will be a new challenge or puzzle that can be solved here</li>
+			<li>you have a cumulative score that is added to as you complete challenges</li>
+			<li>the points you get per challenge is a function of the speed vs yourself and others</li>
+			<li>at the end of 9 challenges, the winner gets a prize (around $40), before it is reset</li>
+			<li>questions? email me at philiphouse2015 at u.northwestern.edu</li>
+			<li>sign up or log in below:</li>
+		</ul>
+		<div style="margin-top: 50px" class="row">
+			<div class="col-lg-4">
+				<a href="/signup" class="btn btn-block btn-primary">Sign Up</a>
+			</div>
+			<div class="col-lg-4 col-lg-offset-1">
+				<a href="/login" class="btn btn-block btn-primary">Log In</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

@@ -4,4 +4,7 @@ from wtforms.validators import Required
 
 class LoginForm(Form):
 	username = TextField('username', validators = [Required()])
-	pin = PasswordField('pin', validators = [Required()])
+	email = TextField('email', validators = [Required()])
+
+class ChallengeForm(Form):
+	answer = TextField('answer', validators = [Required()])

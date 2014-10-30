@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+	<div style="margin-top: 100px" class="col-lg-8 col-lg-offset-2 col-sm-12">
+		<h2>Here's your challenge:</h2>
+		<h3>Decode the following message:</h3>
+		<h4>{{ challenge.prompt }}</h4>
+
+		<hr />
+		<h5>Input your answer with no spaces</h5>
+		<form action="" method="post" name="challenge">
+		    {{ form.hidden_tag()}}
+		    <p>
+		        {{ form.answer(class_="form-control", placeholder="message") }}<br>
+		    </p>
+		    <p><input class="btn btn-primary btn-block" type="submit" value="Submit"></p>
+
+		    <a class="btn btn-danger btn-block" href="{{ url_for('home') }}">Stuck? Go to your dashboard :)</a>
+		</form>
+	</div>
+</div>
+{% endblock %}

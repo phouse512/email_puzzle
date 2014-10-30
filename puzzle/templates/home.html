@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+
+<div style="margin-top: 50px" class="row">
+	<div class="col-lg-5 col-lg-offset-2">
+		<h3>Welcome to your page, {{ user.username }}</h3>
+		<h5>Here's a refresher of the rules:</h5>
+		<ul>
+			<li>every week there will be a new challenge or puzzle that can be solved here</li>
+			<li>you have a cumulative score that is added to as you complete challenges</li>
+			<li>the points you get per challenge is a function of the speed vs yourself and others</li>
+			<li>at the end of 9 challenges, the winner gets a prize (around $40), before it is reset</li>
+			<li>questions? email me at philiphouse2015 at u.northwestern.edu</li>
+		</ul>
+
+		<h5 style="margin-top: 30px">Finished Challenges:</h5>
+		{% if finished %}
+		<ul class="list-group">
+		{% for ind in finished %}
+			<li class="list-group-item">
+				Challenge: {{ ind.title }}
+			</li>
+		{% endfor %}
+		</ul>
+		{% else %}
+		<h6>No challenges done yet...</h6>
+		{% endif %}
+
+		<hr />
+
+		<h5 style="margin-top: 30px">Unfinished Challenges:</h5>
+		{% if unfinished %}
+		<ul class="list-group">
+		{% for ind in unfinished %}
+			<a href="{{ url_for('challenge', challenge_id=ind.id) }}" class="list-group-item">
+				Challenge: {{ ind.title }}
+			</a>
+		{% endfor %}
+		</ul>
+		{% else %}
+		<h6>Hooray! On to the next!</h6>
+		{% endif %}
+
+		<hr />
+	</div>
+	<div class="col-lg-3">
+		<div id="heh">
+			<h4 style="margin-top: 20px">Your Total Score: {{ user.score }}</h4>
+
+			<h5 style="margin-top: 30px">Active Challenges:</h5>
+			{% if left %}
+			<ul class="list-group">
+			{% for ind in left %}
+				<a href="{{ url_for('challenge', challenge_id=ind.id) }}" class="list-group-item">
+					Challenge: {{ ind.title }}
+				</a>
+			{% endfor %}
+			</ul>
+			{% else %}
+			<h6>Check back next week :)</h6>
+			{% endif %}
+
+			<a style="margin-top: 50px; margin-bottom: 20px" class="btn btn-block btn-danger" href="{{ url_for('logout') }}">Want to logout?</a>
+		</div>
+		<div id="scoreboard">
+			<table class="table table-striped">
+				<tr>
+					<th>Username:</th>
+					<th>Score:</th>
+				</tr>
+				{% for i in leaders %}
+					<tr>
+						<td>{{ i.username }}</td>
+						<td>{{ i.score }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock content %}

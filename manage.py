@@ -1,6 +1,6 @@
 from flask.ext.script import Manager
 
-from reminder.app import app, db
+from puzzle.app import app, db
 
 
 manager = Manager(app)
