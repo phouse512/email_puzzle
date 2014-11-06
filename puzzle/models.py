@@ -49,6 +49,7 @@ class Timer(Base):
 	user_id = Column(Integer, ForeignKey('puzzle_user.id'))
 	user = relationship("User", backref=backref('timers', order_by=id))
 	hint_used = Column(Boolean)
+	rank = Column(Integer)	
 
 
 	def __init__(self, start_time, challenge_id, user_id):
