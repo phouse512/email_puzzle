@@ -109,11 +109,17 @@ def challenge(challenge_id):
 	if form.validate_on_submit():
 		if form.answer.data == valid.answer:
 			end = time.time()
-			timer.end_time = end
+
 
 			user = db.session.query(User).filter_by(id=g.user.id).first()
-			score = math.ceil(5 * valid.weight * (4000000 / (end - timer.start_time)))
-			user.score = score + user.score
+
+			rank = db.session.query(Timer).filter(Timer.end_time > 0).filter_by(challenge_id=challenge_id).count()
+			timer.end_time = end
+
+			timeDelta = end - timer.start_time
+			score = math.floor(10000 + (((86400 - timeDelta)/86400.00) * 1000) + ((15 - (rank + 1))/15.0 * 2000))
+			user.score = valid.weight * score + user.score
+			timer.rank = rank + 1
 
 			db.session.commit()
 			flash(('Your answer was correct! You received a score of ' + str(score) ))
