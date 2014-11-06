@@ -109,8 +109,6 @@ def challenge(challenge_id):
 	if form.validate_on_submit():
 		if form.answer.data == valid.answer:
 			end = time.time()
-
-
 			user = db.session.query(User).filter_by(id=g.user.id).first()
 
 			rank = db.session.query(Timer).filter(Timer.end_time > 0).filter_by(challenge_id=challenge_id).count()
