@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Scoreboard
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-sm-12">
+		<h4>Scoreboard</h4>
+		<a href="/home">Go Home</a>
+		<div id="scoreboard">
+			<table class="table table-striped">
+				<tr>
+					<th>Position:</th>
+					<th>Username:</th>
+					<th>Score:</th>
+				</tr>
+				{% for i in leaders %}
+					<tr>
+						<td>{{ loop.index }}</td>
+						<td>{{ i.username }}</td>
+						<td>{{ i.score }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock content %}

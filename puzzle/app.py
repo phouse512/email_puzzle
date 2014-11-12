@@ -156,8 +156,7 @@ def signup():
 	return render_template('signup.html', form=form)
 
 # Example of ajax route that returns JSON
-@app.route('/_add_numbers')
-def add_numbers():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
-    return jsonify(result=a + b)
+@app.route('/scoreboard')
+def scoreboard():
+	leaders = db.session.query(User).order_by(User.score.desc())
+	return render_template('scoreboard.html', leaders=leaders)
