@@ -115,7 +115,7 @@ def challenge(challenge_id):
 			timer.end_time = end
 
 			timeDelta = end - timer.start_time
-			score = math.floor(10000 + (((86400 - timeDelta)/86400.00) * 1000) + ((15 - (rank + 1))/15.0 * 2000))
+			score = math.floor(10000 + max((((86400 - timeDelta)/86400.00) * 1000) + ((15 - (rank + 1))/15.0 * 2000), -2500))
 			user.score = valid.weight * score + user.score
 			timer.rank = rank + 1
 
